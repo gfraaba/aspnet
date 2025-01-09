@@ -12,7 +12,8 @@
     "customizations": {
       "vscode": {
         "extensions": [
-          "ms-dotnettools.csharp"
+          "ms-dotnettools.csharp",
+          "ms-dotnettools.csdevkit"
         ],
         "settings": {
           "terminal.integrated.shell.linux": "/usr/bin/pwsh"
@@ -20,7 +21,8 @@
       }
     },
     "forwardPorts": [5000, 5001],
-    "postCreateCommand": "dotnet --info #&& dotnet restore",
+    "mounts": [ "source=/Users/schada/github/certs,target=/root/.aspnet/https,type=bind" ],
+    "postCreateCommand": "dotnet --info && cd SampleAspNetApp #&& dotnet restore",
     "runArgs": ["--platform", "linux/arm64"]
   }
   

@@ -1,7 +1,10 @@
+# dotnet --list-sdks
+# dotnet --info
 # dotnet new mvc -o SampleAspNetApp
 # cd SampleAspNetApp
 # dotnet build
 # dotnet dev-certs https --clean
+# *NOTE: Run the following command to generate a self-signed certificate in the development environment (ONLY if mounting in the devcontainer.json file is not working)
 # dotnet dev-certs https -ep /$HOME/.aspnet/https/aspnetapp.pfx -p password
 # Update Program.cs to use HTTPS
 # dotnet run
