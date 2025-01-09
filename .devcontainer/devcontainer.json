@@ -1,0 +1,26 @@
+{
+    "name": "ASP.NET Dev Container",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "..",
+        "args": {
+            "PLATFORM": "${localEnv:PLATFORM:linux/arm64}",
+            "DOTNET_SDK_VERSION": "6.0",
+            "PWSH_VERSION": "7.4.6"
+        }
+    },
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "ms-dotnettools.csharp"
+        ],
+        "settings": {
+          "terminal.integrated.shell.linux": "/usr/bin/pwsh"
+        }
+      }
+    },
+    "forwardPorts": [5000, 5001],
+    "postCreateCommand": "dotnet --info #&& dotnet restore",
+    "runArgs": ["--platform", "linux/arm64"]
+  }
+  
