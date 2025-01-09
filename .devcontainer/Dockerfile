@@ -1,3 +1,13 @@
+# dotnet new mvc -o SampleAspNetApp
+# cd SampleAspNetApp
+# dotnet build
+# dotnet dev-certs https --clean
+# dotnet dev-certs https -ep /$HOME/.aspnet/https/aspnetapp.pfx -p password
+# Update Program.cs to use HTTPS
+# dotnet run
+# Browse to https://localhost:5001
+# Shut down the app by pressing Ctrl+C
+
 # Use build arguments for flexibility
 ARG DOTNET_SDK_VERSION="6.0"
 ARG PWSH_VERSION="7.4.6"
