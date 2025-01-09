@@ -61,8 +61,3 @@ RUN if [ "$PLATFORM" = "linux/amd64" ]; then \
       && exit 1; \
     fi
 
-# Set the working directory in the container to /app
-WORKDIR /app
-
-# Add the current directory contents into the container at /app
-ADD . /app

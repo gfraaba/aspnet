@@ -22,7 +22,7 @@
     },
     "forwardPorts": [5000, 5001],
     "mounts": [ "source=/Users/schada/github/certs,target=/root/.aspnet/https,type=bind" ],
-    "postCreateCommand": "dotnet --info && cd SampleAspNetApp #&& dotnet restore",
+    "postCreateCommand": "dotnet --info && cd SampleAspNetApp && dotnet restore",
     "runArgs": ["--platform", "linux/arm64"]
   }
   
