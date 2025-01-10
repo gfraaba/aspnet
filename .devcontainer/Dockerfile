@@ -13,8 +13,8 @@
 
 # Use build arguments for flexibility
 ARG DOTNET_SDK_VERSION="6.0"
-ARG PWSH_VERSION="7.4.6"
-ARG PLATFORM="linux/arm64"
+ARG PWSH_VERSION
+ARG PLATFORM
 
 FROM mcr.microsoft.com/dotnet/sdk:${DOTNET_SDK_VERSION}
 
@@ -46,7 +46,7 @@ RUN if [ "$PLATFORM" = "linux/amd64" ]; then \
         && ls -la /usr/bin/pwsh \
         && sleep 10 \
         && rm /usr/bin/pwsh \
-        && ln -s /usr/local/bin/pwsh${PWSH_VERSION}/pwsh /usr/bin/pwsh \
+        && ln -s /usr/local/bin/pwsh${PWSH_VERSION}/pwsh /usr/local/bin/pwsh \
         # libicu is required for PowerShell; alternatively: export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
         # Yes, libunwind8 is required for .NET applications. It provides the necessary libraries for stack unwinding, which is essential for exception handling and debugging in .NET applications.
         && apt-get install -y libunwind8 libicu-dev \
@@ -61,3 +61,4 @@ RUN if [ "$PLATFORM" = "linux/amd64" ]; then \
       && exit 1; \
     fi
 
+ENV PLATFORM="$PLATFORM"

@@ -4,7 +4,7 @@
         "dockerfile": "Dockerfile",
         "context": "..",
         "args": {
-            "PLATFORM": "${localEnv:PLATFORM:linux/arm64}",
+            "PLATFORM": "${localEnv:PLATFORM}",
             "DOTNET_SDK_VERSION": "6.0",
             "PWSH_VERSION": "7.4.6"
         }
@@ -16,13 +16,18 @@
           "ms-dotnettools.csdevkit"
         ],
         "settings": {
-          "terminal.integrated.shell.linux": "/usr/bin/pwsh"
+          "terminal.integrated.profiles.linux": { 
+                    "pwsh": { 
+                        "path": "/usr/local/bin/pwsh" 
+                    } 
+                }, 
+                "terminal.integrated.defaultProfile.linux": "pwsh"
         }
       }
     },
     "forwardPorts": [5000, 5001],
     "mounts": [ "source=/Users/schada/github/certs,target=/root/.aspnet/https,type=bind" ],
-    "postCreateCommand": "dotnet --info && cd SampleAspNetApp && dotnet restore",
-    "runArgs": ["--platform", "linux/arm64"]
+    "postCreateCommand": "dotnet --info && cd SampleAspNetApp/ && dotnet restore && echo $PLATFORM",
+    "runArgs": ["--platform", "${localEnv:PLATFORM}"]
   }
   
